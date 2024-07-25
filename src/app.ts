@@ -1,10 +1,13 @@
 import express, { Request, Response, NextFunction } from 'express';
+import { json } from 'body-parser';
 
-import tdoRoutes from './routes/todos';
+import todoRoutes from './routes/todos';
 
 const app = express();
 
-app.use('/todos', tdoRoutes);
+app.use(json());
+
+app.use('/todos', todoRoutes);
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   req;
